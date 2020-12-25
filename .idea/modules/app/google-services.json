@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "681520036400",
+    "project_id": "doanchatapp-989f9",
+    "storage_bucket": "doanchatapp-989f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681520036400:android:87982737910be1939b8bf5",
+        "android_client_info": {
+          "package_name": "com.project.appchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681520036400-oqgaarpsa8kidb6sa5kvq6m28dfq32c4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.appchat",
+            "certificate_hash": "650ef7ee9c4f09f7d3e5bd488cc51c295788fe4a"
+          }
+        },
+        {
+          "client_id": "681520036400-6rmcm5srvfuvtrmbdshvobbkv9ba8j07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGVCFg5oUpTQ2UP2-sjhNjZaoyiyx8i0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681520036400-6rmcm5srvfuvtrmbdshvobbkv9ba8j07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

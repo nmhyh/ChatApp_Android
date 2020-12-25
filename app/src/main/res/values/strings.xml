@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Trolele</string>
+    <string name="label_username">username</string>
+    <string name="label_email">email</string>
+    <string name="label_password">password</string>
+    <string name="label_create">Create</string>
+    <string name="btn_register">Register</string>
+    <string name="label_login">Login</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_email">Your Email</string>
+    <string name="reset">Reset</string>
+    <string name="description">By clicking RESET, you will receive an email to reset you password</string>
+    <string name="comfirm_password">comfirm password</string>
+</resources>
