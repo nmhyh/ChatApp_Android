@@ -109,19 +109,22 @@ public class RegisterActivity extends AppCompatActivity {
 
         final ProgressDialog pd = new ProgressDialog(this, R.style.Theme_AppCompat_Light_Dialog);
         pd.setTitle("Loading...");
-        pd.setMessage("Load data...");
+        pd.setMessage("Register Account...");
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pd.setIndeterminate(true);
-//        pd.setProgress(0);
-//        pd.setMax(0);
         pd.show();
 
 
         if(TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)
                 || TextUtils.isEmpty(txt_phone) || TextUtils.isEmpty(txt_confirm_password)){
+            pd.dismiss();
             Toast.makeText(RegisterActivity.this, "All files are required", Toast.LENGTH_SHORT).show();
-        }else if(txt_password.length() < 6){
+        }else if(txt_password.length() < 6) {
+            pd.dismiss();
             Toast.makeText(RegisterActivity.this, "Password must be at least 6 characters and confirm password fail", Toast.LENGTH_SHORT).show();
+        }else if(txt_password != txt_confirm_password ){
+            pd.dismiss();
+            Toast.makeText(RegisterActivity.this, "Password and confirm password must match", Toast.LENGTH_SHORT).show();
         }else{
             pd.setProgress(90);
             pd.setMax(100);

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,17 +134,18 @@ public class ProfileFragment extends Fragment {
                 if(fuser != null){
                     reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
                     HashMap<String, Object> hashMap = new HashMap<>();
-                    hashMap.put("username", username);
-                    hashMap.put("phone", phone);
+                    hashMap.put("username", username.getText().toString());
+                    String user = username.getText().toString();
+                    Log.d("user", user);
+                    hashMap.put("phone", phone.getText().toString());
                     if(male.isChecked()){
                         hashMap.put("sex", "Male");
                     }else {
                         hashMap.put("sex", "Female");
                     }
-                    hashMap.put("search", username.toString().toLowerCase());
-
+                    hashMap.put("search", username.getText().toString().toLowerCase());
+                    reference.updateChildren(hashMap);
                     Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_SHORT).show();
-
                     pd.dismiss();
                 } else {
                     Toast.makeText(getActivity(), "Fail", Toast.LENGTH_SHORT).show();

@@ -55,8 +55,6 @@ public class ChatsFragment extends Fragment {
         pd.setMessage("Load data...");
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pd.setIndeterminate(true);
-//        pd.setProgress(0);
-//        pd.setMax(0);
         pd.show();
 
         reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fuser.getUid());

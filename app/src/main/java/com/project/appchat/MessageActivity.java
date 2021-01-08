@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -104,6 +108,26 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
         seenMessage(userid);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_mess, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case  R.id.menuItem_black:
+                recyclerView.setBackgroundColor(Color.BLACK);
+                return true;
+            case  R.id.menuItem_white:
+                recyclerView.setBackgroundColor(Color.WHITE);
+                return true;
+
+        }
+        return false;
     }
 
     private void  seenMessage(final String userid){

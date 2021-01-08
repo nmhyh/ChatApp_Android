@@ -6,4 +6,9 @@
         android:id="@+id/logout"
         android:title="Logout"
         app:showAsAction="never"/>
+
+<!--    <item-->
+<!--    android:id="@+id/change_background"-->
+<!--    android:title="Change Background"-->
+<!--    app:showAsAction="never"/>-->
 </menu>

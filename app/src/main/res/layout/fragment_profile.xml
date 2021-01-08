@@ -39,8 +39,8 @@
         android:layout_height="100dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -121,7 +121,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButton_Male"
-                    android:layout_width="wrap_content"
+                    android:layout_width="96dp"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="Male"

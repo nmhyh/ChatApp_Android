@@ -138,7 +138,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButton_Male"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="Male"
