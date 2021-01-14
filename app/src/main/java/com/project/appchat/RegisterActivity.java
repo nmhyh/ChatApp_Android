@@ -122,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
         }else if(txt_password.length() < 6) {
             pd.dismiss();
             Toast.makeText(RegisterActivity.this, "Password must be at least 6 characters and confirm password fail", Toast.LENGTH_SHORT).show();
-        }else if(txt_password != txt_confirm_password ){
+        }else if(!txt_password.equals(txt_confirm_password)){
             pd.dismiss();
             Toast.makeText(RegisterActivity.this, "Password and confirm password must match", Toast.LENGTH_SHORT).show();
         }else{

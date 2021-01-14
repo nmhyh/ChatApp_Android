@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,6 +56,9 @@ public class MessageActivity extends AppCompatActivity {
 
     ValueEventListener seenListener;
 
+    SharedPreferences mSharedPreferences;
+    int mColor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +68,18 @@ public class MessageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        recyclerView = findViewById(R.id.recycler_view);
+
+        mSharedPreferences = getSharedPreferences("com.project.appchat", MODE_PRIVATE);
+        mColor = mSharedPreferences.getInt("id_color", Color.WHITE);
+        Log.d("color", " " + mColor);
+        if(mColor == Color.BLACK){
+            recyclerView.setBackgroundColor(Color.BLACK);
+        } else if(mColor == Color.WHITE){
+            recyclerView.setBackgroundColor(Color.WHITE);
+        }
+
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -72,7 +89,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.recycler_view);
+
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
@@ -121,9 +138,11 @@ public class MessageActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case  R.id.menuItem_black:
                 recyclerView.setBackgroundColor(Color.BLACK);
+                mColor = Color.BLACK;
                 return true;
             case  R.id.menuItem_white:
                 recyclerView.setBackgroundColor(Color.WHITE);
+                mColor = Color.WHITE;
                 return true;
 
         }
@@ -260,6 +279,13 @@ public class MessageActivity extends AppCompatActivity {
             reference.removeEventListener(seenListener);
         }
         status("offline");
+
+        SharedPreferences.Editor preEditor = mSharedPreferences.edit();
+        preEditor.clear();
+        preEditor.putInt("id_color", mColor);
+
+
+        preEditor.apply();
     }
 
 }
