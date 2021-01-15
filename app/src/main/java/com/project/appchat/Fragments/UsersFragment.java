@@ -74,6 +74,7 @@ public class UsersFragment extends Fragment {
         return view;
     }
 
+    // Tìm kiếm người dùng
     private void searchUsers(String s) {
         final FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -105,6 +106,7 @@ public class UsersFragment extends Fragment {
 
     }
 
+    // Load người dùng từ bảng Users
     private void readUsers() {
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");

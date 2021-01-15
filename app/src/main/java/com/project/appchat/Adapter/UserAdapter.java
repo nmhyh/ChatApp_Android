@@ -109,7 +109,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUsers.size();
     }
 
-    // check fpr last message
     private void  lastMessage(final String userid, final TextView last_msg){
         theLastMessage = "default";
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -127,10 +126,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                             theLastMessage = chat.getMessage();
                         }
                     }
-//                    if(chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid) ||
-//                            chat.getReceiver().equals(userid) && chat.getSender().equals(firebaseUser.getUid())){
-//                        theLastMessage = chat.getMessage();
-//                    }
+
                 }
 
                 switch (theLastMessage){

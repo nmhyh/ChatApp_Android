@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "All filed are required", Toast.LENGTH_SHORT).show();
 
         }else{
+            // Chứng thực tài khoản
             auth.signInWithEmailAndPassword(txt_email, txt_password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override

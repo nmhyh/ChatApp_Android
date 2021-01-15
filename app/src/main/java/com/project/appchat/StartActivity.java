@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
         super.onStart();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Check if user is null
+        // Lưu trạng thái đăng nhập
         if(firebaseUser != null) {
             simpleAsyncTask = new SimpleAsyncTask(progressBar);
             simpleAsyncTask.execute();

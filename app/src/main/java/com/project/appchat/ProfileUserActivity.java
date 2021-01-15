@@ -41,13 +41,6 @@ public class ProfileUserActivity extends AppCompatActivity {
 
     String userid;
     ImageButton btn_call;
-    EditText txt_send;
-
-    MessageAdapter messageAdapter;
-    List<Chat> mChat;
-    RecyclerView recyclerView;
-
-    ValueEventListener seenListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +51,6 @@ public class ProfileUserActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
         intent = getIntent();
         userid = intent.getStringExtra("userid");
@@ -73,7 +64,7 @@ public class ProfileUserActivity extends AppCompatActivity {
         status = findViewById(R.id.status);
         btn_call = findViewById(R.id.btn_phone);
 
-
+        // Lấy dữ liệu của user hiển thị lên
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
         reference.addValueEventListener(new ValueEventListener() {
@@ -89,7 +80,6 @@ public class ProfileUserActivity extends AppCompatActivity {
                 if(user.getImageURL().equals("default")){
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 }else{
-                    // change this
                     Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
             }
@@ -104,14 +94,13 @@ public class ProfileUserActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                // and this
                 startActivity(new Intent(ProfileUserActivity.this, MessageActivity.class). putExtra("userid", userid)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 
         btn_call.setOnClickListener(new View.OnClickListener(){
-
+            // Gọi ImplicitIntent gọi điện
             @Override
             public void onClick(View v) {
                 String uri = phone.getText().toString();

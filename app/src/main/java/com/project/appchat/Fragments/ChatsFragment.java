@@ -79,12 +79,10 @@ public class ChatsFragment extends Fragment {
 
             }
         });
-
-//        updateToken(FirebaseInstanceId.getInstance().getToken());
-
         return view;
     }
 
+    // Danh sách người đã chat
     private void chatList() {
         mUsers = new ArrayList<>();
 

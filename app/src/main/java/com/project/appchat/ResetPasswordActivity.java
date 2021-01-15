@@ -39,6 +39,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         if(email.equals("")){
             Toast.makeText(ResetPasswordActivity.this, "All files are required",Toast.LENGTH_SHORT).show();
         }else{
+            // Gửi mail để người dùng lấy lại mật khẩu
             firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

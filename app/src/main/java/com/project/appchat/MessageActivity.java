@@ -83,7 +83,6 @@ public class MessageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                // and this
                 startActivity(new Intent(MessageActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
@@ -152,6 +151,7 @@ public class MessageActivity extends AppCompatActivity {
         return false;
     }
 
+    // Trạng thái tin nhắn đã xem
     private void  seenMessage(final String userid){
         reference = FirebaseDatabase.getInstance().getReference("Chats");
         seenListener = reference.addValueEventListener(new ValueEventListener() {
@@ -174,6 +174,7 @@ public class MessageActivity extends AppCompatActivity {
         });
     }
 
+    // Gửi tin nhắn
     private  void sendMessage(String sender, final String receiver, String message){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         HashMap<String, Object> hashMap = new HashMap<>();
@@ -184,7 +185,6 @@ public class MessageActivity extends AppCompatActivity {
 
         reference.child("Chats").push().setValue(hashMap);
 
-//         add user to chat fragment
         final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
                 .child(fuser.getUid())
                 .child(userid);
@@ -203,36 +203,19 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-//        final String msg = message;
-//        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                User user = dataSnapshot.getValue(User.class);
-//                if(notify) {
-//                    sendNotification(receiver, user.getUsername(), msg);
-//                }
-//                notify = false;
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
     }
 
-        public void btn_send(View view) {
-            String msg = txt_send.getText().toString();
-            if(!msg.equals("")){
-                sendMessage(fuser.getUid(), userid, msg);
-            }else{
-                Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
-            }
-            txt_send.setText("");
+    public void btn_send(View view) {
+        String msg = txt_send.getText().toString();
+        if(!msg.equals("")){
+            sendMessage(fuser.getUid(), userid, msg);
+        }else{
+            Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
+        }
+        txt_send.setText("");
     }
 
+    // Load dữ liệu message từ bảng chat
     private  void readMessage(final String myid, final String userid, final String imageurl){
         mChat = new ArrayList<>();
 
@@ -286,7 +269,6 @@ public class MessageActivity extends AppCompatActivity {
         SharedPreferences.Editor preEditor = mSharedPreferences.edit();
         preEditor.clear();
         preEditor.putInt("id_color", mColor);
-
 
         preEditor.apply();
     }

@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText username, email, password, phone, age, confirm_password;
+    EditText username, email, password, phone, confirm_password;
 
     RadioButton male;
     RadioButton female;
@@ -49,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
         confirm_password = findViewById(R.id.editText_comfirmpassword);
         male = findViewById(R.id.radioButton_Male);
         female = findViewById(R.id.radioButton_Female);
-
 
         auth = FirebaseAuth.getInstance();
 
@@ -125,6 +124,18 @@ public class RegisterActivity extends AppCompatActivity {
         }else if(!txt_password.equals(txt_confirm_password)){
             pd.dismiss();
             Toast.makeText(RegisterActivity.this, "Password and confirm password must match", Toast.LENGTH_SHORT).show();
+        }else if(txt_phone.trim().length() != 10){
+            pd.dismiss();
+            Toast.makeText(RegisterActivity.this, "Phone must 10 char", Toast.LENGTH_SHORT).show();
+        }else if(txt_phone.trim().length() == 10){
+            for (int i=0;i<txt_phone.length();i++)
+            {
+                if(!isNumber(txt_phone.charAt(i)))
+                {
+                    pd.dismiss();
+                    Toast.makeText(RegisterActivity.this, "Phone must is number", Toast.LENGTH_SHORT).show();
+                }
+            }
         }else{
             pd.setProgress(90);
             pd.setMax(100);
@@ -136,5 +147,32 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void login(View view) {
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+    }
+    boolean isNumber(char a) {
+        //int b = Integer.parseInt(a);
+        switch (a) {
+            case '0':
+                return true;
+            case '1':
+                return true;
+            case '2':
+                return true;
+            case '3':
+                return true;
+            case '4':
+                return true;
+            case '5':
+                return true;
+            case '6':
+                return true;
+            case '7':
+                return true;
+            case '8':
+                return true;
+            case '9':
+                return true;
+            default:
+                return false;
+        }
     }
 }

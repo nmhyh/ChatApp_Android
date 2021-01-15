@@ -38,9 +38,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.project.appchat.MainActivity;
 import com.project.appchat.Model.User;
 import com.project.appchat.R;
 import com.project.appchat.RegisterActivity;
+import com.project.appchat.StartActivity;
 
 import java.util.HashMap;
 
@@ -84,6 +86,7 @@ public class ProfileFragment extends Fragment {
 
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
+        // Hiển thị thông tin cá nhân
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
@@ -117,6 +120,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        // Thêm hình ảnh
         image_profile.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -125,6 +129,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        // Cập nhật thông tin cá nhân
         btn_updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,16 +160,20 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        // Xóa tài khoản
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FirebaseAuth.getInstance().signOut();
+                // đăng xuất và trở về StartActivity
+                startActivity(new Intent(getContext(), StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 
         return view;
     }
 
+    // Mở thư viện ảnh
     private void openImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -178,6 +187,7 @@ public class ProfileFragment extends Fragment {
         return  mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
+    // Upload hình ảnh
     private void uploadImage(){
         final ProgressDialog pd = new ProgressDialog(getContext());
         pd.setMessage("Uploading");
