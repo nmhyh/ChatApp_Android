@@ -8,7 +8,7 @@
     tools:context=".Fragments.ProfileFragment">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
+        android:id="@+id/guideline14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -30,7 +30,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -40,7 +40,7 @@
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -79,7 +79,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/guideline6">
 
         <LinearLayout
@@ -151,13 +151,24 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/btn_update"
+            android:id="@+id/btn_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#FF8933"
+            android:ems="10"
+            android:text="update"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="100dp"
                 android:background="#FF8933"
                 android:ems="10"
-                android:text="update"
+                android:text="delete"
                 android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textSize="18sp" />
 

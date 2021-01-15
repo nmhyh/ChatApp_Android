@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,7 +95,7 @@ public class MessageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         profile_image = findViewById(R.id.profile_image3);
-        username = findViewById(R.id.username3);
+        username = findViewById(R.id.username);
         txt_send = findViewById(R.id.txt_send);
 
         intent = getIntent();
@@ -144,7 +143,11 @@ public class MessageActivity extends AppCompatActivity {
                 recyclerView.setBackgroundColor(Color.WHITE);
                 mColor = Color.WHITE;
                 return true;
-
+            case  R.id.profile:
+                Intent intent = new Intent(this, ProfileUserActivity.class);
+                intent.putExtra("userid", userid);
+                startActivity(intent);
+                return true;
         }
         return false;
     }

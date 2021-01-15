@@ -1,6 +1,8 @@
 package com.project.appchat.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,16 +36,26 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         this.mChat = mChat;
         this.imageurl = imageurl;
     }
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView show_message;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public final TextView show_message;
         public ImageView profile_image;
         public TextView txt_seen;
 
-        public ViewHolder(@NonNull View itemView) {
+        final MessageAdapter messageAdapter;
+
+        public ViewHolder(@NonNull View itemView, MessageAdapter messageAdapter) {
             super(itemView);
             show_message = itemView.findViewById(R.id.show_message);
             profile_image = itemView.findViewById(R.id.profile_image);
             txt_seen = itemView.findViewById(R.id.txt_seen);
+            this.messageAdapter = messageAdapter;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            v.setBackgroundColor(Color.GREEN);
+            messageAdapter.notifyDataSetChanged();
         }
     }
 
@@ -52,11 +64,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         if (viewType == MSG_TYPE_RIGHT){
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_right, parent, false);
 
-            return new MessageAdapter.ViewHolder(view);
+            return new MessageAdapter.ViewHolder(view, this);
         }else{
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_left, parent, false);
 
-            return new MessageAdapter.ViewHolder(view);
+            return new MessageAdapter.ViewHolder(view, this);
         }
     }
 

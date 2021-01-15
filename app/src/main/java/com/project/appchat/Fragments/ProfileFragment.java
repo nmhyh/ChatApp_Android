@@ -53,7 +53,7 @@ public class ProfileFragment extends Fragment {
     EditText username, email, phone;
     RadioButton male;
     RadioButton female;
-    Button btn_updateProfile;
+    Button btn_updateProfile, btn_delete;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -78,6 +78,7 @@ public class ProfileFragment extends Fragment {
         male = view.findViewById(R.id.radioButton_Male);
         female = view.findViewById(R.id.radioButton_Female);
         btn_updateProfile = view.findViewById(R.id.btn_update);
+        btn_delete = view.findViewById(R.id.btn_delete);
 
         auth = FirebaseAuth.getInstance();
 
@@ -151,6 +152,13 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getActivity(), "Fail", Toast.LENGTH_SHORT).show();
                     pd.dismiss();
                 }
+            }
+        });
+
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
